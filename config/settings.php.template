@@ -11,7 +11,8 @@
 	
 	$sitesettings['address'] 		= 'https://website/isds454';
 	$sitesettings['title'] 			= 'TicSys';
-	$sitesettings['title_full'] 	= 'Ticket SYstem';
+	$sitesettings['title_full'] 	= 'Ticket System';
+	$sitesettings['attachment_max_s'] =	'2m';///< max file size for attachment
 	$sitesettings['debug']			= 2;	///<0 = off, 1 = debug, 2 = verbose
 	
 	//these are the default meta tags that a pages has incase a page
@@ -22,7 +23,7 @@
 	$sitesettings['meta']['og:url']			= (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";  //address in bar
 	$sitesettings['meta']['og:title']		= $sitesettings['title'];
 	$sitesettings['meta']['og:type']		= "website";
-	$sitesettings['meta']['og:description']	= "Tickit SYstem isds454";
+	$sitesettings['meta']['og:description']	= "Tickit System isds454";
 	$sitesettings['meta']['og:image']		= '';
 	$sitesettings['meta']['twitter:card']			= "summary";
 	

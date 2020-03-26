@@ -6,7 +6,7 @@ $SITEstatus = 0;
 $SITEmessage = array();
 $SITEdebug = array();
 $INCLUDEmessages['site'] = array();
-
+require_once($INCLUDE.'/common.php');
 //page info defaults
 $pageinfo['title'] = "pagetitle";
 $pageinfo['description'] = "pagedesc";
