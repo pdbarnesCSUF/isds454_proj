@@ -50,7 +50,7 @@ CREATE TABLE tier {
 --rename to agent?
 CREATE TABLE support_agent {
     agent_id                serial      PRIMARY KEY,
-    tier_id              integer     NOT NULL REFERENCES tier(tier_id),
+    tier_id                 integer     NOT NULL REFERENCES tier(tier_id),
     agent_firstname         text        ,
     agent_lastname          text        ,
     agent_email             text        NOT NULL
