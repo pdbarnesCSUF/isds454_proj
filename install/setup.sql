@@ -12,19 +12,19 @@ CREATE TABLE user {
 
 CREATE TABLE priority {
     priority_id             serial      PRIMARY KEY,
-    --priority_value        integer     NOT NULL,   --needed for ordering
+    priority_value          integer     NOT NULL,   --needed for ordering/preserving id
     priority_name           text        NOT NULL
 };
 
 CREATE TABLE urgency {
     urgency_id              serial      PRIMARY KEY,
-    --urgency_value         integer     NOT NULL,   --needed for ordering
+    urgency_value           integer     NOT NULL,   --needed for ordering/preserving id
     urgency_name            text        NOT NULL
 };
 
 CREATE TABLE impact {
     impact_id               serial      PRIMARY KEY,
-    --impact_value          integer     NOT NULL,   --needed for ordering
+    impact_value            integer     NOT NULL,   --needed for ordering/preserving id
     impact_name             text        NOT NULL
 };
 
@@ -61,7 +61,7 @@ CREATE TABLE ticket {
     ticket_title            text        NOT NULL,
     ticket_date             timestamp with time zone    NOT NULL DEFAULT CURRENT_TIMESTAMP,
     ticket_comment          text        NOT NULL,   --in real sys, seperate comment table
-    ticket_attachment       boolean     NOT NULL DEFAULT false, --not good to put binaries in DB, look in filesystem
+    ticket_attachment       boolean     NOT NULL DEFAULT false, --not good to put binaries in DB, true? check filesystem : dont look
     ticket_timeworked       interval    NOT NULL DEFAULT 0,
     ticket_user             integer     REFERENCES user(user_id),
     ticket_category         integer     REFERENCES category(category_id),
