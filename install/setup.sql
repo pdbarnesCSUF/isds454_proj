@@ -50,7 +50,7 @@ CREATE TABLE tier {
 --rename to agent?
 CREATE TABLE support_agent {
     agent_id                serial      PRIMARY KEY,
-    agent_tier              integer     NOT NULL REFERENCES tier(tier_id),
+    tier_id              integer     NOT NULL REFERENCES tier(tier_id),
     agent_firstname         text        ,
     agent_lastname          text        ,
     agent_email             text        NOT NULL
@@ -63,12 +63,12 @@ CREATE TABLE ticket {
     ticket_comment          text        NOT NULL,   --in real sys, seperate comment table
     ticket_attachment       boolean     NOT NULL DEFAULT false, --not good to put binaries in DB, true? check filesystem : dont look
     ticket_timeworked       interval    NOT NULL DEFAULT 0,
-    ticket_user             integer     REFERENCES user(user_id),
-    ticket_category         integer     REFERENCES category(category_id),
-    ticket_status           integer     REFERENCES status(status_id),
-    ticket_tier             integer     REFERENCES tier(tier_id),
-    ticket_priority         integer     REFERENCES priority(priority_id),
-    ticket_urgency          integer     REFERENCES urgency(urgency_id),
-    ticket_impact           integer     REFERENCES impact(impact_id),
-    ticket_agent            integer     REFERENCES support_agent(agent_id)
+    user_id                 integer     REFERENCES user(user_id),
+    category_id             integer     REFERENCES category(category_id),
+    status_id               integer     REFERENCES status(status_id),
+    tier_id                 integer     REFERENCES tier(tier_id),
+    priority_id             integer     REFERENCES priority(priority_id),
+    urgency_id              integer     REFERENCES urgency(urgency_id),
+    impact_id               integer     REFERENCES impact(impact_id),
+    agent_id                integer     REFERENCES support_agent(agent_id)
 };
