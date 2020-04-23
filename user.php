@@ -27,7 +27,7 @@ $pageinfo['description'] = "User homepage";
 <body>
 <script>
 	$(document).ready ( function () {
-        //-------individual scores-----------
+        //-------ticket list-----------
 		$.getJSON( "ajax/ajax_user_listtickets.php", function( rtndata ) {
 			if ( rtndata.action == 1)
 			{
@@ -74,7 +74,7 @@ $pageinfo['description'] = "User homepage";
 															'<td></td>'+
 															'<td>Error retrieving data</td>'+
 														'</tr>');
-		});//getJSON - scores_individual.php
+		});//getJSON - ajax_user_listtickets.php
     });
 </script>
 	<nav id="sitenav" class="navbar navbar-inverse navbar-fixed-top">
