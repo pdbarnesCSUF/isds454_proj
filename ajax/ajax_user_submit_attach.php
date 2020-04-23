@@ -13,7 +13,7 @@ header('Content-Type: application/json');
 if (include_once('../include/include.php'))
 {
 	site_verbose('PAGE:ajax/template_ajax.php');
-	site_init();
+	//site_init();
 	//do something
 	
 	$responsearr['data'] = true;
