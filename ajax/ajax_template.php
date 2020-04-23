@@ -1,6 +1,6 @@
 <?php
 /*
- * @file template_ajax.php
+ * @file ajax_template.php
  * @desc template for ajax pages
  */
  
@@ -12,7 +12,7 @@ header('Content-Type: application/json');
 
 if (include_once('../include/include.php'))
 {
-	site_verbose('PAGE:ajax/template_ajax.php');
+	site_verbose('PAGE:ajax/ajax_template.php');
 	//site_init();
 	//do something
 	
