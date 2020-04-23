@@ -52,9 +52,19 @@ $pageinfo['description'] = "User homepage";
 <div id="main" class="container-fluid">
 	<h1><strong>User home Page</strong></h1>
 	<div id="mainwell" class="well">
-	view all tickets by current user
-	<hr>
-	<a href="user_submit.php">Submit Ticket</a>
+    <a href="user_submit.php" class="btn btn-primary" role="button">Submit Ticket</a>
+    <hr>
+    <table class="table table-hover table-condensed">
+    <thead><tr>
+        <th>Date</th>
+        <th>Category</th>
+        <th>Status</th>
+        <th>Title</th>
+    </tr></thead>
+    <tbody id="user_ticketbody">
+    
+    </tbody>
+    </table>
 	</div><!--mainwell-->
 </div><!--main-->
 <?php require($INCLUDE.'/copy.php'); ?>
