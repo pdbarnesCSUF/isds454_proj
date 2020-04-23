@@ -52,6 +52,42 @@ if ($SITEstatus >= 100)
 	$pageinfo['url'] = $sitesettings['meta']['og:url'];
 	$pageinfo['image'] = $sitesettings['meta']['og:image'];
 }
+//----------database
+//load database
+if ($SITEstatus >= 10)
+{
+	# Type="POSTGRES"
+	//KEEP SEPERATED
+	try
+	{
+		$sitedbPDO = new PDO(	'pgsql:dbname='.$sitesettings['db_database'].
+								';host='.$sitesettings['db_hostname'].
+								';user='.$sitesettings['db_username'].
+								';password='.$sitesettings['db_password']
+								);
+		$SITEstatus = 11;
+		$sitedbPDO->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+		$SITEstatus = 12;
+		//$sitedbPDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		$sitedbPDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
+		//echo "PDO connection object created";
+		$SITEstatus = 30;
+	}
+	catch (Exception $e)
+	{
+		error_log($e->getMessage());
+		$INCLUDEmessages['site'][] = "DB_Error";
+	}
+}
+
+switch ($sitesettings['debug'])
+{
+	case 2:
+		site_verbose("verbose enabled");
+	case 1:
+		site_debug("debug enabled");
+		break;
+}
 //=========================== END OF SETUP
 //=========================== FUNCTION DEFINITION
 /**

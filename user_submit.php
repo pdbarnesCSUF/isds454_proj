@@ -57,7 +57,7 @@ $pageinfo['description'] = "User Submit Ticket";
 				<div class="form-group">
 					<label class="control-label col-sm-2" for="user_submit_user">User</label>
 					<div class="col-sm-10">
-						<input class="form-control" id="user_submit_user" name="username" value="sse username" DISABLED READONLY>
+						<input class="form-control" id="user_submit_user" name="username" value="sso username" DISABLED READONLY>
 						<div class="ajax-response" id="user_submit_user"></div>
 					</div>
 				</div>

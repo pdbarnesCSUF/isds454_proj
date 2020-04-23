@@ -10,7 +10,7 @@ $responsearr['message'] = array();
 $responsearr['debug'] = array();
 header('Content-Type: application/json');
 
-if (include_once('../include/ptid.php'))
+if (include_once('../include/include.php'))
 {
 	ptid_verbose('PAGE:ajax/template_ajax.php');
 	ptid_init();
@@ -19,14 +19,14 @@ if (include_once('../include/ptid.php'))
 	$responsearr['data'] = true;
 	$responsearr['action'] = 1; //no problem
 	//-----end-----
-	$responsearr['message'] = $PTID_SESSION['message'];
-	$responsearr['debug'] = $PTID_SESSION['debug'];
+	$responsearr['message'] = $SITEmessage;
+	$responsearr['debug'] = $SITEdebug;
 }
 else
 {
 	$responsearr['action'] = 02; //include error
 	$responsearr['message'][] = "Server Error";
-	$responsearr['debug'][] = "PTID Include error";
+	$responsearr['debug'][] = "Include error";
 }
 
 echo json_encode($responsearr);
