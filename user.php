@@ -25,6 +25,58 @@ $pageinfo['description'] = "User homepage";
         <title><?php echo $pageinfo['title']?></title>
 </head>
 <body>
+<script>
+	$(document).ready ( function () {
+        //-------individual scores-----------
+		$.getJSON( "ajax/ajax_user_listtickets.php", function( rtndata ) {
+			if ( rtndata.action == 1)
+			{
+				if (rtndata.data.count > 0)
+				{
+					$.each(rtndata.data.scores_individual, function(idx,value) {
+						$('#user_tickettable > tbody:last-child').append('<tr id="ticket' + value.ticket_id + '">'+
+															'<td><a href="user_ticketview.php?ticket_id='+value.ticket_id+'">'+value.ticket_id+'</a></td>'+
+															'<td><a href="user_ticketview.php?ticket_id='+value.ticket_id+'">'+value.date+'</a></td>'+
+															'<td><a href="user_ticketview.php?ticket_id='+value.ticket_id+'">'+value.category+'</a></td>'+
+															'<td><a href="user_ticketview.php?ticket_id='+value.ticket_id+'">'+value.status+'</a></td>'+
+															'<td><a href="user_ticketview.php?ticket_id='+value.ticket_id+'">'+value.title+'</a></td>'+
+														'</tr>');
+					});//each
+				}
+				else
+				{
+					$('#user_tickettable > tbody:last-child').append('<tr id="ticket0">'+
+															'<td></td>'+
+															'<td></td>'+
+															'<td></td>'+
+															'<td></td>'+
+															'<td>No Data</td>'+
+														'</tr>');
+				}
+			}//if
+			else
+			{
+				console.error("getJSON returned not 1, returned: " + rtndata.action);
+				$('#user_tickettable > tbody:last-child').append('<tr id="ticket0">'+
+															'<td></td>'+
+															'<td></td>'+
+															'<td></td>'+
+															'<td></td>'+
+															'<td>Error retrieving data</td>'+
+														'</tr>');
+			}
+		}).fail( function(rtndata, textStatus, error) {
+			console.error("getJSON failed, status: " + textStatus + ", error: "+error);
+			$('#user_tickettable > tbody:last-child').append('<tr id="ticket0">'+
+															'<td></td>'+
+															'<td></td>'+
+															'<td></td>'+
+															'<td></td>'+
+															'<td>Error retrieving data</td>'+
+														'</tr>');
+		});//getJSON - scores_individual.php
+    });
+</script>
 	<nav id="sitenav" class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -54,8 +106,9 @@ $pageinfo['description'] = "User homepage";
 	<div id="mainwell" class="well">
     <a href="user_submit.php" class="btn btn-primary" role="button">Submit Ticket</a>
     <hr>
-    <table class="table table-hover table-condensed">
+    <table class="table table-hover table-condensed" id="user_tickettable">
     <thead><tr>
+        <th>ID</th>
         <th>Date</th>
         <th>Category</th>
         <th>Status</th>
