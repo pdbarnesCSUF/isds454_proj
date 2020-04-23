@@ -128,4 +128,100 @@ function site_verbose($msg)
 		$SITEdebug[] = $msg;
 }
 
+function get_all_priority()
+{
+	global $sitedbPDO;
+	site_verbose("(".__FUNCTION__.")");
+	//============================
+	$stmt = $sitedbPDO->query("	SELECT *
+                                FROM priority;",
+                                PDO::FETCH_ASSOC);
+	$result = $stmt->fetchall();
+	if ($result)
+	{
+		return $result;
+	}
+	else
+		return false;
+}
+function get_all_urgency()
+{
+	global $sitedbPDO;
+	site_verbose("(".__FUNCTION__.")");
+	//============================
+	$stmt = $sitedbPDO->query("	SELECT *
+                                FROM urgency;",
+                                PDO::FETCH_ASSOC);
+	$result = $stmt->fetchall();
+	if ($result)
+	{
+		return $result;
+	}
+	else
+		return false;
+}
+function get_all_impact()
+{
+	global $sitedbPDO;
+	site_verbose("(".__FUNCTION__.")");
+	//============================
+	$stmt = $sitedbPDO->query("	SELECT *
+                                FROM impact;",
+                                PDO::FETCH_ASSOC);
+	$result = $stmt->fetchall();
+	if ($result)
+	{
+		return $result;
+	}
+	else
+		return false;
+}
+function get_all_category()
+{
+	global $sitedbPDO;
+	site_verbose("(".__FUNCTION__.")");
+	//============================
+	$stmt = $sitedbPDO->query("	SELECT *
+                                FROM category;",
+                                PDO::FETCH_ASSOC);
+	$result = $stmt->fetchall();
+	if ($result)
+	{
+		return $result;
+	}
+	else
+		return false;
+}
+function get_all_status()
+{
+	global $sitedbPDO;
+	site_verbose("(".__FUNCTION__.")");
+	//============================
+	$stmt = $sitedbPDO->query("	SELECT *
+                                FROM status;",
+                                PDO::FETCH_ASSOC);
+	$result = $stmt->fetchall();
+	if ($result)
+	{
+		return $result;
+	}
+	else
+		return false;
+}
+function get_all_tier()
+{
+	global $sitedbPDO;
+	site_verbose("(".__FUNCTION__.")");
+	//============================
+	$stmt = $sitedbPDO->query("	SELECT *
+                                FROM tier;",
+                                PDO::FETCH_ASSOC);
+	$result = $stmt->fetchall();
+	if ($result)
+	{
+		return $result;
+	}
+	else
+		return false;
+}
 ?>
