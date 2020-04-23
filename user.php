@@ -33,7 +33,7 @@ $pageinfo['description'] = "User homepage";
 			{
 				if (rtndata.data.count > 0)
 				{
-					$.each(rtndata.data.scores_individual, function(idx,value) {
+					$.each(rtndata.data, function(idx,value) {
 						$('#user_tickettable > tbody:last-child').append('<tr id="ticket' + value.ticket_id + '">'+
 															'<td><a href="user_ticketview.php?ticket_id='+value.ticket_id+'">'+value.ticket_id+'</a></td>'+
 															'<td><a href="user_ticketview.php?ticket_id='+value.ticket_id+'">'+value.date+'</a></td>'+
