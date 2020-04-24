@@ -136,10 +136,9 @@ function get_all_priority()
 	$stmt = $sitedbPDO->query("	SELECT *
                                 FROM priority;",
                                 PDO::FETCH_ASSOC);
-	$result = $stmt->fetchall();
-	if ($result)
+	if ($stmt)
 	{
-		return $result;
+		return $stmt->fetchall();
 	}
 	else
 		return false;
@@ -152,10 +151,9 @@ function get_all_urgency()
 	$stmt = $sitedbPDO->query("	SELECT *
                                 FROM urgency;",
                                 PDO::FETCH_ASSOC);
-	$result = $stmt->fetchall();
-	if ($result)
+	if ($stmt)
 	{
-		return $result;
+		return $stmt->fetchall();
 	}
 	else
 		return false;
@@ -168,10 +166,9 @@ function get_all_impact()
 	$stmt = $sitedbPDO->query("	SELECT *
                                 FROM impact;",
                                 PDO::FETCH_ASSOC);
-	$result = $stmt->fetchall();
-	if ($result)
+	if ($stmt)
 	{
-		return $result;
+		return $stmt->fetchall();
 	}
 	else
 		return false;
@@ -184,10 +181,9 @@ function get_all_category()
 	$stmt = $sitedbPDO->query("	SELECT *
                                 FROM category;",
                                 PDO::FETCH_ASSOC);
-	$result = $stmt->fetchall();
-	if ($result)
+	if ($stmt)
 	{
-		return $result;
+		return $stmt->fetchall();
 	}
 	else
 		return false;
@@ -200,10 +196,9 @@ function get_all_status()
 	$stmt = $sitedbPDO->query("	SELECT *
                                 FROM status;",
                                 PDO::FETCH_ASSOC);
-	$result = $stmt->fetchall();
-	if ($result)
+	if ($stmt)
 	{
-		return $result;
+		return $stmt->fetchall();
 	}
 	else
 		return false;
@@ -216,10 +211,9 @@ function get_all_tier()
 	$stmt = $sitedbPDO->query("	SELECT *
                                 FROM tier;",
                                 PDO::FETCH_ASSOC);
-	$result = $stmt->fetchall();
-	if ($result)
+	if ($stmt)
 	{
-		return $result;
+		return $stmt->fetchall();
 	}
 	else
 		return false;

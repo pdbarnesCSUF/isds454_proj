@@ -49,6 +49,27 @@ $pageinfo['description'] = "User Submit Ticket";
 			</div>
 		</div>
 	</nav>
+<script>
+	$(document).ready ( function () {
+        //-------populate dropdowns-----------
+		$.getJSON( "ajax/ajax_get_formfields.php", function( rtndata ) {
+			if ( rtndata.action == 1)
+			{
+                //---Category---
+                $.each(rtndata.data.category, function(idx,value) {
+                    $('#user_submit_category').append('<option id="category' + value.category_id + '">'+
+                                                        value.category_name+
+                                                    '</option>');
+                });//each category
+			}//if
+		}).fail( function(rtndata, textStatus, error) {
+			console.error("getJSON failed, status: " + textStatus + ", error: "+error);
+			$('#user_submit_category').append('<option id="categoryE">'+
+                                                        'Error Getting Data'+
+                                                    '</option>');
+		});//getJSON - ajax_get_formfields.php
+    });
+</script>
 <div id="main" class="container">
 	<h1><strong>Submit Ticket</strong></h1>
 	<div id="mainwell" class="well">
@@ -58,28 +79,29 @@ $pageinfo['description'] = "User Submit Ticket";
 					<label class="control-label col-sm-2" for="user_submit_user">User</label>
 					<div class="col-sm-10">
 						<input class="form-control" id="user_submit_user" name="username" value="sso username" DISABLED READONLY>
-						<div class="ajax-response" id="user_submit_user"></div>
+						<div class="ajax-response" id="user_submit_user_status"></div>
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="control-label col-sm-2" for="user_submit_email">Email</label>
 					<div class="col-sm-10">
 						<input class="form-control" id="user_submit_email" name="email" value="sso.email@organization.com" DISABLED READONLY>
-						<div class="ajax-response" id="user_submit_email"></div>
+						<div class="ajax-response" id="user_submit_email_status"></div>
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="control-label col-sm-2" for="user_submit_date">Date</label>
 					<div class="col-sm-10">
 						<input class="form-control" id="user_submit_date" name="date" value="<?php echo date('Y-m-d') ?>" DISABLED READONLY>
-						<div class="ajax-response" id="user_submit_date"></div>
+						<div class="ajax-response" id="user_submit_date_status"></div>
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="control-label col-sm-2" for="user_submit_category">Category</label>
 					<div class="col-sm-10">
-						<input class="form-control" id="user_submit_category" name="category" placeholder="Software/hardware/etc" value="">
-						<div class="ajax-response" id="user_submit_category"></div>
+                        <select class="form-control" id="user_submit_category">
+                        </select>
+						<div class="ajax-response" id="user_submit_category_status"></div>
 					</div>
 				</div>
 				<div class="form-group">
@@ -98,7 +120,7 @@ $pageinfo['description'] = "User Submit Ticket";
 					<label class="control-label col-sm-2" for="user_submit_comment">Comment</label>
 					<div class="col-sm-10">
 						<textarea class="form-control" id="user_submit_comment" name="comment" rows="5" placeholder="State Problem"></textarea>
-						<div class="ajax-response" id="user_submit_comment"></div>
+						<div class="ajax-response" id="user_submit_comment_status"></div>
 					</div>
 				</div>
 				<div class="form-group">
