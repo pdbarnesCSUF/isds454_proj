@@ -9,7 +9,7 @@
 	$sitesettings['db_username'] = "isds454";
 	$sitesettings['db_password'] = "isds454";
 	
-	$sitesettings['address'] 		= 'https://website/isds454';
+	$sitesettings['address'] 		= 'https://website/isds454/';
 	$sitesettings['title'] 			= 'TicSys';
 	$sitesettings['title_full'] 	= 'Ticket System';
 	$sitesettings['attachment_max_s'] =	'2m';///< max file size for attachment
@@ -27,5 +27,5 @@
 	$sitesettings['meta']['og:image']		= '';
 	$sitesettings['meta']['twitter:card']			= "summary";
 	
-	//$sitesettings['maintenance']				= "the PTID Frontend is down for maintenance!"; ///< if set, offline
+	//$sitesettings['maintenance']				= "the Frontend is down for maintenance!"; ///< if set, offline
 ?>
