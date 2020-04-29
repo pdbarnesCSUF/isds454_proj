@@ -15,9 +15,26 @@ if (include_once('../include/include.php'))
 	site_verbose('PAGE:ajax/ajax_user_listtickets.php');
 	//site_init();
 	//do something
-	
-	$responsearr['data']['count'] = 0;
-	$responsearr['action'] = 1; //no problem
+	$stmt = $sitedbPDO->query("	SELECT  ticket_id,
+                                        ticket_date,
+                                        category_name,
+                                        status_name,
+                                        ticket_title
+                                FROM    ticket
+                                JOIN    category ON ticket.category_id = category.category_id
+                                JOIN    status ON ticket.status_id = status.status_id;",
+                                PDO::FETCH_ASSOC);
+    if ($stmt)
+	{
+        $responsearr['data']['ticket'] = $stmt->fetchall();
+        $responsearr['data']['count'] = $stmt->rowCount();
+        $responsearr['action'] = 1; //ok
+	}
+	else
+    {
+        $responsearr['data']['count'] = 0;
+        $responsearr['action'] = 0; //error
+    }
 	//-----end-----
 	$responsearr['message'] = $SITEmessage;
 	$responsearr['debug'] = $SITEdebug;

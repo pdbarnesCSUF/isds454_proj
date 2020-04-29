@@ -1,7 +1,7 @@
 <?php
 /**
- *  @file template_page.php
- *  @brief template page. intended to be placed in root
+ *  @file user.php
+ *  @brief user view of tickets
  *  
  */
 use Tracy\Debugger;
@@ -33,13 +33,13 @@ $pageinfo['description'] = "User homepage";
 			{
 				if (rtndata.data.count > 0)
 				{
-					$.each(rtndata.data, function(idx,value) {
+					$.each(rtndata.data.ticket, function(idx,value) {
 						$('#user_tickettable > tbody:last-child').append('<tr id="ticket' + value.ticket_id + '">'+
 															'<td><a href="user_ticketview.php?ticket_id='+value.ticket_id+'">'+value.ticket_id+'</a></td>'+
-															'<td><a href="user_ticketview.php?ticket_id='+value.ticket_id+'">'+value.date+'</a></td>'+
-															'<td><a href="user_ticketview.php?ticket_id='+value.ticket_id+'">'+value.category+'</a></td>'+
-															'<td><a href="user_ticketview.php?ticket_id='+value.ticket_id+'">'+value.status+'</a></td>'+
-															'<td><a href="user_ticketview.php?ticket_id='+value.ticket_id+'">'+value.title+'</a></td>'+
+															'<td><a href="user_ticketview.php?ticket_id='+value.ticket_id+'">'+value.ticket_date+'</a></td>'+
+															'<td><a href="user_ticketview.php?ticket_id='+value.ticket_id+'">'+value.category_name+'</a></td>'+
+															'<td><a href="user_ticketview.php?ticket_id='+value.ticket_id+'">'+value.status_name+'</a></td>'+
+															'<td><a href="user_ticketview.php?ticket_id='+value.ticket_id+'">'+value.ticket_title+'</a></td>'+
 														'</tr>');
 					});//each
 				}
@@ -72,7 +72,7 @@ $pageinfo['description'] = "User homepage";
 															'<td></td>'+
 															'<td></td>'+
 															'<td></td>'+
-															'<td>Error retrieving data</td>'+
+															'<td>Connection Error</td>'+
 														'</tr>');
 		});//getJSON - ajax_user_listtickets.php
     });
