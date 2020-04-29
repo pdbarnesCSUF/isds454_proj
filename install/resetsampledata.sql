@@ -43,22 +43,30 @@ INSERT INTO ticket (ticket_title,ticket_date,ticket_comment,
                     user_id,category_id,status_id,
                     tier_id,priority_id,urgency_id,impact_id,agent_id           
                     ) VALUES (
-                        'Help with installation','2020-04-22 12:34:56.78-07','plz install my scanner',
-                        1,5,3,
-                        2,NULL,NULL,NULL,NULL);
+                        'Need New Server','2015-10-25 19:32:56.78-07','Need new server for border',
+                        1,5,2,
+                        1,2,2,2,1);
                         
 INSERT INTO ticket (ticket_title,ticket_date,ticket_comment,
                     user_id,category_id,status_id,
                     tier_id,priority_id,urgency_id,impact_id,agent_id           
                     ) VALUES (
                         'Broken Screen','2019-12-21 17:18:56.22-07','My screen looks strange',
-                        1,5,4,
+                        1,2,4,
                         2,1,1,1,2);
                         
 INSERT INTO ticket (ticket_title,ticket_date,ticket_comment,
                     user_id,category_id,status_id,
                     tier_id,priority_id,urgency_id,impact_id,agent_id           
                     ) VALUES (
-                        'Need New Server','2015-10-25 19:32:56.78-07','Need new server for border',
-                        1,5,2,
-                        1,2,2,2,1);
+                        'Help with installation','2020-03-22 12:34:56.78-07','plz install my scanner',
+                        1,5,3,
+                        2,NULL,NULL,NULL,NULL);
+
+INSERT INTO ticket (ticket_title,ticket_date,ticket_comment,
+                    user_id,category_id,status_id,
+                    tier_id,priority_id,urgency_id,impact_id,agent_id           
+                    ) VALUES (
+                        'How to screenshot','2020-03-29 14:34:56.78-07','How do i take a screenshot',
+                        1,1,3,
+                        2,NULL,NULL,NULL,NULL);
