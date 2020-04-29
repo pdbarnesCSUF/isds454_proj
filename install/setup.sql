@@ -62,7 +62,7 @@ CREATE TABLE ticket (
     ticket_date             timestamp with time zone    NOT NULL DEFAULT CURRENT_TIMESTAMP,
     ticket_comment          text        NOT NULL,   --in real sys, seperate comment table
     ticket_attachment       boolean     NOT NULL DEFAULT false, --not good to put binaries in DB, true? check filesystem : dont look
-    ticket_timeworked       integer    NOT NULL DEFAULT 0,
+    ticket_timeworked       integer     NOT NULL DEFAULT 0,
     user_id                 integer     REFERENCES users(user_id),
     category_id             integer     REFERENCES category(category_id),
     status_id               integer     REFERENCES status(status_id),
