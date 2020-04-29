@@ -15,14 +15,19 @@ if (include_once('../include/include.php'))
 	site_verbose('PAGE:ajax/ajax_user_listtickets.php');
 	//site_init();
 	//do something
+    
+    //when sign in implemented, only get tickets that user submitted
+    //for now its just user 1
 	$stmt = $sitedbPDO->query("	SELECT  ticket_id,
                                         ticket_date,
                                         category_name,
                                         status_name,
                                         ticket_title
                                 FROM    ticket
-                                JOIN    category ON ticket.category_id = category.category_id
-                                JOIN    status ON ticket.status_id = status.status_id;",
+                                LEFT OUTER JOIN    category ON ticket.category_id = category.category_id
+                                LEFT OUTER JOIN    status ON ticket.status_id = status.status_id
+                                WHERE   user_id = 1
+                                ;",
                                 PDO::FETCH_ASSOC);
     if ($stmt)
 	{
