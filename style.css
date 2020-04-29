@@ -46,17 +46,8 @@ pre {
 	white-space: pre-wrap;
 	margin: 1em 0;
 }
-.ptid_profpic {
-	max-height: 256px;
-	width: auto;
-}
-#navbar_login_profpic{
-	max-height: 50px;
-	max-width: 50px;
-}
-#navbar_login_proflink{
-	padding-top: 0px;
-	padding-bottom: 0px;
+.tdcenter {
+	text-align: center;
 }
 #navbar_login_btnshowmodallogin{
 	color: black;
@@ -68,62 +59,7 @@ pre {
 .modal-content {
 	padding: 10px; /* from 20px */
 }
-.ptid_modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
-/*
-#ptid_modal_login_content {
-	background-color: #fefefe;
-	color: black;
-	position: relative;
-    margin: 15% auto auto auto; /* 15% from the top and centered */
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
-    max-width: 1024px;
-}
-*/
-.ptid_modal_message {
-	background-color: #EE8;
-}
-/*
-.ptid_modal_button {
-	border: 1px #AAA solid;
-	text-decoration: none;
-    cursor: pointer;
-    font-size: 1em;
-    font-weight: bold;
-    background-color: #DDD;
-    color: black;
-    border-radius: 4px;
-    padding: 5px;
-    transition: .2s;
-}
-.ptid_modal_button:hover,
-.ptid_modal_button:focus {
-    background-color: #CCC;
-}
-.ptid_modal_close {
-    color: #aaa;
-    border: none;
-    position: absolute;
-    top: 0.2em;
-    right: 0.2em;
-}
-.ptid_modal_close:hover,
-.ptid_modal_close:focus {
-    color: black;
-}
-*/
+
 #copy {
 	color: #666666;
 	font-size: 12px;
