@@ -46,11 +46,7 @@ $pageinfo['description'] = "User homepage";
 				else
 				{
 					$('#user_tickettable > tbody:last-child').append('<tr id="ticket0">'+
-															'<td></td>'+
-															'<td></td>'+
-															'<td></td>'+
-															'<td></td>'+
-															'<td>No Data</td>'+
+															'<td colspan="5" class="tdcenter">No Data</td>'+
 														'</tr>');
 				}
 			}//if
@@ -58,21 +54,13 @@ $pageinfo['description'] = "User homepage";
 			{
 				console.error("getJSON returned not 1, returned: " + rtndata.action);
 				$('#user_tickettable > tbody:last-child').append('<tr id="ticket0">'+
-															'<td></td>'+
-															'<td></td>'+
-															'<td></td>'+
-															'<td></td>'+
-															'<td>Error retrieving data</td>'+
+															'<td colspan="5" class="tdcenter">Error retrieving data</td>'+
 														'</tr>');
 			}
 		}).fail( function(rtndata, textStatus, error) {
 			console.error("getJSON failed, status: " + textStatus + ", error: "+error);
 			$('#user_tickettable > tbody:last-child').append('<tr id="ticket0">'+
-															'<td></td>'+
-															'<td></td>'+
-															'<td></td>'+
-															'<td></td>'+
-															'<td>Connection Error</td>'+
+															'<td colspan="5" class="tdcenter">Connection Error</td>'+
 														'</tr>');
 		});//getJSON - ajax_user_listtickets.php
     });
