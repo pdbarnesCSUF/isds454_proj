@@ -15,6 +15,7 @@ if (include_once('../include/include.php'))
 	site_verbose('PAGE:ajax/ajax_get_formfields.php');
 	//site_init();
 	//do something
+    $responsearr['action'] = 01; //no error
     $responsearr['data']['priority'] = get_all_priority();
     $responsearr['data']['urgency'] = get_all_urgency();
     $responsearr['data']['impact'] = get_all_impact();

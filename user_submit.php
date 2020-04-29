@@ -38,6 +38,10 @@ $pageinfo['description'] = "User Submit Ticket";
                                                     '</option>');
                 });//each category
 			}//if
+            else
+            {
+                console.error ("rtndata action not 1");
+            }
 		}).fail( function(rtndata, textStatus, error) {
 			console.error("getJSON failed, status: " + textStatus + ", error: "+error);
 			$('#user_submit_category').append('<option id="categoryE">'+
