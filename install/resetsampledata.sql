@@ -36,8 +36,9 @@ INSERT INTO tier (tier_value,tier_name,tier_description) VALUES (1,'Tech Enginee
 INSERT INTO tier (tier_value,tier_name,tier_description) VALUES (2,'Help Desk','first help');
 
 INSERT INTO users (user_firstname,user_lastname,user_email,user_department) VALUES ('John','Doe','jdoe@company.com','Accounting');
-INSERT INTO support_agent (tier_id,agent_firstname,agent_lastname,agent_email) VALUES (1,'Edgar','Hoover','eh@company.com');
-INSERT INTO support_agent (tier_id,agent_firstname,agent_lastname,agent_email) VALUES (2,'Frank','Abagnale','fa@company.com');
+INSERT INTO users (user_firstname,user_lastname,user_email,user_department) VALUES ('Emily','Smith','esmith@company.com','Human Resources');
+INSERT INTO support_agent (tier_id,agent_firstname,agent_lastname,agent_email) VALUES (1,'Edgar','Hoover','ehoover@company.com');
+INSERT INTO support_agent (tier_id,agent_firstname,agent_lastname,agent_email) VALUES (2,'Frank','Abagnale','fabagnale@company.com');
 
 INSERT INTO ticket (ticket_title,ticket_date,ticket_comment,
                     user_id,category_id,status_id,
@@ -52,9 +53,17 @@ INSERT INTO ticket (ticket_title,ticket_date,ticket_comment,
                     tier_id,priority_id,urgency_id,impact_id,agent_id           
                     ) VALUES (
                         'Broken Screen','2019-12-21 17:18:56.22-07','My screen looks strange',
-                        1,2,4,
+                        2,2,4,
                         2,1,1,1,2);
-                        
+
+INSERT INTO ticket (ticket_title,ticket_date,ticket_comment,
+                    user_id,category_id,status_id,
+                    tier_id,priority_id,urgency_id,impact_id,agent_id           
+                    ) VALUES (
+                        'Losing connection','2020-02-23 10:12:23.78-07','Computer keeps saying it is losing connection',
+                        2,4,3,
+                        2,NULL,NULL,NULL,NULL);                        
+
 INSERT INTO ticket (ticket_title,ticket_date,ticket_comment,
                     user_id,category_id,status_id,
                     tier_id,priority_id,urgency_id,impact_id,agent_id           
