@@ -1,7 +1,7 @@
 --an sql to clear all tables and reset filler info
 
 --clear all tables
-TRUNCATE    user,
+TRUNCATE    users,
             priority,
             urgency,
             impact,
@@ -9,6 +9,7 @@ TRUNCATE    user,
             status,
             tier,
             support_agent,
-            ticket;
+            ticket
+            RESTART IDENTITY; --restarts counters
 
 --data insertion here....
