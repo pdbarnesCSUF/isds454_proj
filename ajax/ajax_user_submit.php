@@ -94,8 +94,8 @@ if (include_once('../include/include.php'))
 	if ($responsearr['action'] == 1) //if any error
     {
         site_verbose("no error, preparing");
-        $stmt = $sitedbPDO->prepare("   INSERT INTO ticket (user_id, ticket_title, category_id, ticket_comment, status_id)
-                                        VALUES (:st_user_id,:st_ticket_title,:st_category,:st_ticket_comment,1);");
+        $stmt = $sitedbPDO->prepare("   INSERT INTO ticket (user_id, ticket_title, category_id, ticket_comment, status_id, tier_id)
+                                        VALUES (:st_user_id,:st_ticket_title,:st_category,:st_ticket_comment,1,2);");
         $stmt->bindParam(':st_user_id',$user_id);
         $stmt->bindParam(':st_ticket_title',$_POST['title']);
         $stmt->bindParam(':st_category',$_POST['category']);
