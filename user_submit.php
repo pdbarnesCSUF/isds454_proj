@@ -38,7 +38,7 @@ $pageinfo['description'] = "User Submit Ticket";
 			{
                 //---Category---
                 $.each(rtndata.data.category, function(idx,value) {
-                    $('#user_submit_category').append('<option id="category' + value.category_id + '">'+
+                    $('#user_submit_category').append('<option id="category' + value.category_id + '" value="' + value.category_id + '">'+
                                                         value.category_name+
                                                     '</option>');
                 });//each category
@@ -70,6 +70,48 @@ $pageinfo['description'] = "User Submit Ticket";
                                                         'Error Getting Data'+
                                                     '</option>');
 		});//getJSON - ajax_get_userinfo.php
+        //submit
+		$("#user_submit_submitbtn").click(function(e) {
+            $("#user_submit_submitbtn").prop('value',"Creating...");
+            $("#user_submit_submitbtn").prop('disabled',true);
+            $.ajax({
+                type: "POST",
+                url: "ajax/ajax_user_submit.php",
+                data: $("#user_submit_form").serialize(),
+                xhrFields: { withCredentials: true },
+                success: function (rtndata) {
+                    if (rtndata.action == 1)
+                    {
+                        $("#user_submit_submitbtn_status").text('Success. Submitted.');
+                        window.location.href = "<?php echo $sitesettings['address'];?>/user.php";
+                    }//if (rtndata.action == 1)
+                    else
+                    {
+                        if (rtndata.data.title.valid)
+                            labelajax("#user_submit_title_status","label-success",rtndata.data.title.reason);
+                        else
+                            labelajax("#user_submit_title_status","label-danger" ,rtndata.data.title.reason);
+                        if (rtndata.data.category.valid)
+                            labelajax("#user_submit_category_status","label-success",rtndata.data.category.reason);
+                        else
+                            labelajax("#user_submit_category_status","label-danger" ,rtndata.data.category.reason);
+                        if (rtndata.data.attachment.valid)
+                            labelajax("#user_submit_attachment_status","label-success",rtndata.data.attachment.reason);
+                        else
+                            labelajax("#user_submit_attachment_status","label-danger" ,rtndata.data.attachment.reason);
+                        if (rtndata.data.comment.valid)
+                            labelajax("#user_submit_comment_status","label-success",rtndata.data.comment.reason);
+                        else
+                            labelajax("#user_submit_comment_status","label-danger" ,rtndata.data.comment.reason);
+                    }//else of (rtndata.action == 1)
+                },
+                fail: function (rtndata) {
+                    $("#user_submit_submitbtn_status").text("Connection Error");
+                }
+            });//ajax
+            $("#user_submit_submitbtn").prop('value',"Create");
+            $("#user_submit_submitbtn").prop('disabled',false);
+		});
     });
 </script>
 	<?php require($INCLUDE.'/links.php'); ?>
@@ -81,35 +123,35 @@ $pageinfo['description'] = "User Submit Ticket";
 				<div class="form-group">
 					<label class="control-label col-sm-2" for="user_submit_user">User</label>
 					<div class="col-sm-10">
-						<input class="form-control" id="user_submit_user" name="username" value="sso username" DISABLED READONLY>
+						<input class="form-control" id="user_submit_user" name="username" value="sso username" READONLY>
 						<div class="ajax-response" id="user_submit_user_status"></div>
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="control-label col-sm-2" for="user_submit_email">Email</label>
 					<div class="col-sm-10">
-						<input class="form-control" id="user_submit_email" name="email" value="sso.email@organization.com" DISABLED READONLY>
+						<input class="form-control" id="user_submit_email" name="email" value="sso.email@organization.com" READONLY>
 						<div class="ajax-response" id="user_submit_email_status"></div>
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="control-label col-sm-2" for="user_submit_date">Date</label>
 					<div class="col-sm-10">
-						<input class="form-control" id="user_submit_date" name="date" value="<?php echo date('Y-m-d') ?>" DISABLED READONLY>
+						<input class="form-control" id="user_submit_date" name="date" value="<?php echo date('Y-m-d') ?>" READONLY>
 						<div class="ajax-response" id="user_submit_date_status"></div>
 					</div>
 				</div>
                 <div class="form-group">
 					<label class="control-label col-sm-2" for="user_submit_title">Title</label>
 					<div class="col-sm-10">
-                        <input class="form-control" id="user_submit_title">
+                        <input class="form-control" id="user_submit_title" name="title">
 						<div class="ajax-response" id="user_submit_title_status"></div>
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="control-label col-sm-2" for="user_submit_category">Category</label>
 					<div class="col-sm-10">
-                        <select class="form-control" id="user_submit_category">
+                        <select class="form-control" id="user_submit_category" name="category">
                         </select>
 						<div class="ajax-response" id="user_submit_category_status"></div>
 					</div>
@@ -119,7 +161,7 @@ $pageinfo['description'] = "User Submit Ticket";
 					<div class="col-sm-10">
 						<div class="col-sm-8">
 							<input type="hidden" name="MAX_FILE_SIZE" value="<?php echo return_bytes($sitesettings['attachment_max_s']);?>" />
-							<input class="btn btn-default" id="user_submit_attachment" name="user_submit_attachment" type="file" >
+							<input class="btn btn-default" id="user_submit_attachment" name="attachment" type="file" >
 							<div class="help-block">
 								Max file size:<?php echo $sitesettings['attachment_max_s'];?>.
 							</div>
@@ -133,11 +175,11 @@ $pageinfo['description'] = "User Submit Ticket";
 						<div class="ajax-response" id="user_submit_comment_status"></div>
 					</div>
 				</div>
-				<div class="form-group">
-					<button class="btn btn-primary" id="user_submit_submitbtn">Submit</button>
-					<div class="ajax-response" id="user_submit_submitbtn"></div>
-				</div>
 			</form><!-- user_submit form -->
+            <div class="form-group">
+                <button class="btn btn-primary" id="user_submit_submitbtn">Submit</button>
+                <div class="ajax-response" id="user_submit_submitbtn"></div>
+            </div>
 		</div><!--form-horizontal-->
 	</div><!--mainwell-->
 </div><!--main-->

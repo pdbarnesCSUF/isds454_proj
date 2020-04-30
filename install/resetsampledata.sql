@@ -28,9 +28,9 @@ INSERT INTO category (category_name,category_description) VALUES ('Hardware','ha
 INSERT INTO category (category_name,category_description) VALUES ('Software','software issues');
 INSERT INTO category (category_name,category_description) VALUES ('Networking','networking issues');
 INSERT INTO category (category_name,category_description) VALUES ('Installation','installation of new equipment');
+INSERT INTO status (status_name) VALUES ('New');
 INSERT INTO status (status_name) VALUES ('Complete');
 INSERT INTO status (status_name) VALUES ('On Hold');
-INSERT INTO status (status_name) VALUES ('New');
 INSERT INTO status (status_name) VALUES ('In Progress');
 INSERT INTO tier (tier_value,tier_name,tier_description) VALUES (1,'Tech Engineer','can handle everything');
 INSERT INTO tier (tier_value,tier_name,tier_description) VALUES (2,'Help Desk','first help');
@@ -53,7 +53,7 @@ INSERT INTO ticket (ticket_title,ticket_date,ticket_comment,
                     tier_id,priority_id,urgency_id,impact_id,agent_id           
                     ) VALUES (
                         'Broken Screen','2019-12-21 17:18:56.22-07','My screen looks strange',
-                        2,2,4,
+                        2,2,3,
                         2,1,1,1,2);
 
 INSERT INTO ticket (ticket_title,ticket_date,ticket_comment,
@@ -61,7 +61,7 @@ INSERT INTO ticket (ticket_title,ticket_date,ticket_comment,
                     tier_id,priority_id,urgency_id,impact_id,agent_id           
                     ) VALUES (
                         'Losing connection','2020-02-23 10:12:23.78-07','Computer keeps saying it is losing connection',
-                        2,4,3,
+                        2,4,4,
                         2,NULL,NULL,NULL,NULL);                        
 
 INSERT INTO ticket (ticket_title,ticket_date,ticket_comment,
@@ -69,7 +69,7 @@ INSERT INTO ticket (ticket_title,ticket_date,ticket_comment,
                     tier_id,priority_id,urgency_id,impact_id,agent_id           
                     ) VALUES (
                         'Help with installation','2020-03-22 12:34:56.78-07','plz install my scanner',
-                        1,5,3,
+                        1,5,1,
                         2,NULL,NULL,NULL,NULL);
 
 INSERT INTO ticket (ticket_title,ticket_date,ticket_comment,
@@ -77,5 +77,5 @@ INSERT INTO ticket (ticket_title,ticket_date,ticket_comment,
                     tier_id,priority_id,urgency_id,impact_id,agent_id           
                     ) VALUES (
                         'How to screenshot','2020-03-29 14:34:56.78-07','How do i take a screenshot',
-                        1,1,3,
+                        1,1,1,
                         2,NULL,NULL,NULL,NULL);
