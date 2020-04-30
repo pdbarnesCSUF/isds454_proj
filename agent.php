@@ -39,11 +39,11 @@ $pageinfo['description'] = "Agent homepage";
 				{
 					$.each(rtndata.data.ticket, function(idx,value) {
 						$('#agent_tickettable > tbody:last-child').append('<tr id="ticket' + value.ticket_id + '">'+
-															'<td><a href="agent_ticketview.php?ticket_id='+value.ticket_id+'">'+value.ticket_id+'</a></td>'+
-															'<td><a href="agent_ticketview.php?ticket_id='+value.ticket_id+'">'+value.ticket_date+'</a></td>'+
-															'<td><a href="agent_ticketview.php?ticket_id='+value.ticket_id+'">'+value.category_name+'</a></td>'+
-															'<td><a href="agent_ticketview.php?ticket_id='+value.ticket_id+'">'+value.status_name+'</a></td>'+
-															'<td><a href="agent_ticketview.php?ticket_id='+value.ticket_id+'">'+value.ticket_title+'</a></td>'+
+															'<td><a href="agent_ticketedit.php?ticket_id='+value.ticket_id+'">'+value.ticket_id+'</a></td>'+
+															'<td><a href="agent_ticketedit.php?ticket_id='+value.ticket_id+'">'+value.ticket_date+'</a></td>'+
+															'<td><a href="agent_ticketedit.php?ticket_id='+value.ticket_id+'">'+value.category_name+'</a></td>'+
+															'<td><a href="agent_ticketedit.php?ticket_id='+value.ticket_id+'">'+value.status_name+'</a></td>'+
+															'<td><a href="agent_ticketedit.php?ticket_id='+value.ticket_id+'">'+value.ticket_title+'</a></td>'+
 															//TODO - list all from one user / view user page
                                                             '<td>'+nullblank(value.user_lastname)+'</td>'+
 															'<td>'+nullblank(value.tier_value)+'</td>'+
