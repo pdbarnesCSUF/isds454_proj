@@ -99,6 +99,13 @@ $pageinfo['description'] = "User Submit Ticket";
 						<div class="ajax-response" id="user_submit_date_status"></div>
 					</div>
 				</div>
+                <div class="form-group">
+					<label class="control-label col-sm-2" for="user_submit_title">Title</label>
+					<div class="col-sm-10">
+                        <input class="form-control" id="user_submit_title">
+						<div class="ajax-response" id="user_submit_title_status"></div>
+					</div>
+				</div>
 				<div class="form-group">
 					<label class="control-label col-sm-2" for="user_submit_category">Category</label>
 					<div class="col-sm-10">
