@@ -1,7 +1,7 @@
 <?php
 /**
- *  @file template_page.php
- *  @brief template page. intended to be placed in root
+ *  @file user_submit.php
+ *  @brief user side submit new ticket
  *  
  */
 use Tracy\Debugger;
