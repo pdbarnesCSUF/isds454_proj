@@ -27,6 +27,11 @@ $pageinfo['description'] = "User Submit Ticket";
 <body>
 <script>
 	$(document).ready ( function () {
+        var current_user_id = 1; //user id of who we are simulating
+        //-------set date time-----------
+        var dt = new Date();
+        var now_timestamp = dt.getFullYear() + "-" + (dt.getMonth()+1) + "-" + dt.getDate();
+        $('#user_submit_date').val(now_timestamp);
         //-------populate dropdowns-----------
 		$.getJSON( "ajax/ajax_get_formfields.php", function( rtndata ) {
 			if ( rtndata.action == 1)
@@ -48,6 +53,23 @@ $pageinfo['description'] = "User Submit Ticket";
                                                         'Error Getting Data'+
                                                     '</option>');
 		});//getJSON - ajax_get_formfields.php
+        //-------populate userinfo-----------
+		$.getJSON( "ajax/ajax_get_userinfo.php?user_id="+current_user_id, function( rtndata ) {
+			if ( rtndata.action == 1)
+			{
+                    $('#user_submit_user').val(rtndata.data.user_firstname + ' ' + rtndata.data.user_lastname);
+                    $('#user_submit_email').val(rtndata.data.user_email);
+			}//if
+            else
+            {
+                console.error ("rtndata action not 1");
+            }
+		}).fail( function(rtndata, textStatus, error) {
+			console.error("getJSON failed, status: " + textStatus + ", error: "+error);
+			$('#user_submit_category').append('<option id="categoryE">'+
+                                                        'Error Getting Data'+
+                                                    '</option>');
+		});//getJSON - ajax_get_userinfo.php
     });
 </script>
 	<?php require($INCLUDE.'/links.php'); ?>

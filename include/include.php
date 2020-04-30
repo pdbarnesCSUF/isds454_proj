@@ -128,6 +128,25 @@ function site_verbose($msg)
 		$SITEdebug[] = $msg;
 }
 
+function get_userinfo($user_id)
+{
+    global $sitedbPDO;
+	site_verbose("(".__FUNCTION__.")");
+	//============================
+    //prepare first, prevents injection
+	$stmt = $sitedbPDO->prepare("SELECT * FROM users WHERE user_id=:st_user_id;");
+	$stmt->bindParam(':st_user_id',$user_id);
+	if ($stmt->execute())
+	{
+		if ($stmt->rowCount() == 1)
+		{
+			$userArr = $stmt->fetch(PDO::FETCH_ASSOC);
+			return $userArr;
+		}
+	}
+	return false;
+}
+
 function get_all_priority()
 {
 	global $sitedbPDO;
