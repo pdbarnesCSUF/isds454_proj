@@ -70,7 +70,7 @@ $pageinfo['description'] = "User homepage";
 	<h1><strong>User home Page</strong></h1>
 	<div id="mainwell" class="well">
     <a href="user_submit.php" class="btn btn-primary" role="button">Submit Ticket</a>
-    <h2>logged in as userid 1</h2>
+    <h3>logged in as userid 1</h3>
     <hr>
     <table class="table table-hover table-condensed" id="user_tickettable">
     <thead><tr>

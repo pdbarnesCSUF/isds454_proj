@@ -16,7 +16,7 @@ if (include_once('../include/include.php'))
 	//site_init();
 	//do something
 	$stmt = $sitedbPDO->query("	SELECT  ticket_id,
-                                        ticket_date,
+                                        to_char(ticket_date, 'YYYY-MM-DD HH:mm') AS ticket_date,
                                         category_name,
                                         status_name,
                                         ticket_title,

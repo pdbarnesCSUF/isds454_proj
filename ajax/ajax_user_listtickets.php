@@ -19,7 +19,7 @@ if (include_once('../include/include.php'))
     //when sign in implemented, only get tickets that user submitted
     //for now its just user 1
 	$stmt = $sitedbPDO->query("	SELECT  ticket_id,
-                                        ticket_date,
+                                        to_char(ticket_date, 'YYYY-MM-DD') AS ticket_date,
                                         category_name,
                                         status_name,
                                         ticket_title
