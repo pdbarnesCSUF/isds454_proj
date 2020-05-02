@@ -27,6 +27,7 @@ if (include_once('../include/include.php'))
                                 LEFT OUTER JOIN    category ON ticket.category_id = category.category_id
                                 LEFT OUTER JOIN    status ON ticket.status_id = status.status_id
                                 WHERE   user_id = 1
+                                ORDER BY ticket_date DESC
                                 ;",
                                 PDO::FETCH_ASSOC);
     if ($stmt)

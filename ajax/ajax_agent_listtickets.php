@@ -35,6 +35,7 @@ if (include_once('../include/include.php'))
                                 LEFT OUTER JOIN    impact ON ticket.impact_id = impact.impact_id
                                 LEFT OUTER JOIN    support_agent ON ticket.agent_id = support_agent.agent_id
                                 LEFT OUTER JOIN    users ON ticket.user_id = users.user_id
+                                ORDER BY ticket_date DESC
                                 ;",
                                 PDO::FETCH_ASSOC);
     if ($stmt)
