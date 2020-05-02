@@ -6,6 +6,10 @@
  
 $responsearr['action'] = 00; //unknown error
 $responsearr['data'] = array(
+    'userid' => array(
+		'valid' => false,
+		'reason' => ''
+	),
 	'title' => array(
 		'valid' => false,
 		'reason' => ''
@@ -36,9 +40,21 @@ if (include_once('../include/include.php'))
 	//do something
     $responsearr['action'] = 1; //no problem start, set 7 if bad input
 	//=====quick validation===== TODO full validation later
-    //-----user-----
-    //check logged in
-    $user_id = 1; //bypass for testing
+    //-----userid-----
+    $user_id = 1; //normally handled by SSO
+    /*
+    if (isset($_POST['userid']))
+    {
+        //stricter validation here
+        $responsearr['data']['userid']['valid'] = true;
+    }
+    else
+    {
+        $responsearr['data']['userid']['valid'] = false;
+        $responsearr['data']['userid']['reason'] = 'User Missing';
+        $responsearr['action'] = 07; //bad / missing input
+    }
+    */
     //-----title-----
     if (isset($_POST['title']))
     {
