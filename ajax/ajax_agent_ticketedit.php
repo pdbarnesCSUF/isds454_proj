@@ -6,6 +6,10 @@
  
 $responsearr['action'] = 00; //unknown error
 $responsearr['data'] = array(
+    'ticket_id' => array(
+		'valid' => false,
+		'reason' => ''
+	),
 	'title' => array(
 		'valid' => false,
 		'reason' => ''
@@ -14,7 +18,7 @@ $responsearr['data'] = array(
 		'valid' => false,
 		'reason' => ''
 	),
-    'user' => array(
+    'userid' => array(
 		'valid' => false,
 		'reason' => ''
 	),
@@ -66,7 +70,7 @@ if (include_once('../include/include.php'))
 	//=====quick validation===== TODO full validation later
     //-----user-----
     //check logged in
-    $agent_id = 1; //bypass for testing
+    //$agent_id = 1; //bypass for testing
     //-----ticket_id-----
     if (isset($_POST['ticket_id']))
     {
@@ -104,15 +108,15 @@ if (include_once('../include/include.php'))
         $responsearr['action'] = 07; //bad / missing input
     }
     //-----User-----
-    if (isset($_POST['user']))
+    if (isset($_POST['userid']))
     {
         //stricter validation here
-        $responsearr['data']['user']['valid'] = true;
+        $responsearr['data']['userid']['valid'] = true;
     }
     else
     {
-        $responsearr['data']['user']['valid'] = false;
-        $responsearr['data']['user']['reason'] = 'User Missing';
+        $responsearr['data']['userid']['valid'] = false;
+        $responsearr['data']['userid']['reason'] = 'UserID Missing';
         $responsearr['action'] = 07; //bad / missing input
     }
     //-----Status-----
@@ -176,7 +180,7 @@ if (include_once('../include/include.php'))
         $responsearr['action'] = 07; //bad / missing input
     }
     //-----Agent-----
-    if (isset($_POST['agent']))
+    if (isset($_POST['agentid']))
     {
         //stricter validation here
         $responsearr['data']['agent']['valid'] = true;
@@ -218,6 +222,7 @@ if (include_once('../include/include.php'))
 	if ($responsearr['action'] == 1) //if any error
     {
         site_verbose("no error, preparing");
+        //skipped attachment
         $stmt = $sitedbPDO->prepare("   UPDATE ticket 
                                         SET ticket_title=:st_ticket_title,
                                             category_id=:st_category_id,
@@ -228,21 +233,22 @@ if (include_once('../include/include.php'))
                                             urgency_id=:st_urgency_id,
                                             impact_id=:st_impact_id,
                                             agent_id=:st_agent_id,
-                                            attachment=:st_attachment,
-                                            ticket_comment=:st_ticket_comment,
+                                            
+                                            ticket_comment=:st_ticket_comment
                                         WHERE ticket_id=:st_ticket_id
                                         ;");
         $stmt->bindParam(':st_ticket_title',$_POST['title']);
-        $stmt->bindParam(':st_category',$_POST['category']);
-        $stmt->bindParam(':st_user_id',$_POST['user_id']);
+        $stmt->bindParam(':st_category_id',$_POST['category']);
+        $stmt->bindParam(':st_user_id',$_POST['userid']);
         $stmt->bindParam(':st_status_id',$_POST['status']);
         $stmt->bindParam(':st_tier_id',$_POST['tier']);
         $stmt->bindParam(':st_priority_id',$_POST['priority']);
         $stmt->bindParam(':st_urgency_id',$_POST['urgency']);
         $stmt->bindParam(':st_impact_id',$_POST['impact']);
-        $stmt->bindParam(':st_agent_id',$_POST['agent']);
+        $stmt->bindParam(':st_agent_id',$_POST['agentid']);
+        //$stmt->bindParam(':st_attachment',$_POST['attachment']);
         $stmt->bindParam(':st_ticket_comment',$_POST['comment']);
-        $stmt->bindParam(':st_ticket_id',$ticket_id);
+        $stmt->bindParam(':st_ticket_id',$_POST['ticket_id']);
         site_verbose("prepared");
         if ($stmt->execute())
         {
