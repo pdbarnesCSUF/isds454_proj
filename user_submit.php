@@ -26,6 +26,18 @@ $pageinfo['description'] = "User Submit Ticket";
 </head>
 <body>
 <script>
+function labelajax(selector,state_class,message){
+	if (state_class == 'hide')
+	{
+		$(selector).hide();
+	}
+	else {
+		$(selector).show();
+		$(selector).removeClass();
+		$(selector).addClass("label " + state_class);
+		$(selector).text(message);
+	}
+}//func labelajax
 	$(document).ready ( function () {
         var current_user_id = 1; //user id of who we are simulating
         //-------set date time-----------
@@ -178,7 +190,7 @@ $pageinfo['description'] = "User Submit Ticket";
 			</form><!-- user_submit form -->
             <div class="form-group">
                 <button class="btn btn-primary" id="user_submit_submitbtn">Submit</button>
-                <div class="ajax-response" id="user_submit_submitbtn"></div>
+                <div class="ajax-response" id="user_submit_submitbtn_status"></div>
             </div>
 		</div><!--form-horizontal-->
 	</div><!--mainwell-->
