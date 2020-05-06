@@ -320,7 +320,7 @@ function labelajax(selector,state_class,message){
 				<div class="form-group">
 					<label class="control-label col-sm-2" for="agent_submit_date">Date</label>
 					<div class="col-sm-10">
-						<input class="form-control" id="agent_submit_date" name="date" value="<?php echo date('Y-m-d') ?>" READONLY>
+						<input class="form-control" id="agent_submit_date" name="date" value="" READONLY>
 						<div class="ajax-response" id="agent_submit_date_status"></div>
 					</div>
 				</div>
