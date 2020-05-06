@@ -27,6 +27,9 @@ pre {
 	background-color: #242E45;	
 	color: white;
 }
+.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+    background-color: #ddd;
+}
 .well {
 	background-color: #95A2C3;
 	color: black;
